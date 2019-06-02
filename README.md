@@ -30,6 +30,14 @@ pip3 install permafrost
 * `--debug` - Print all of the emails that exist within the domain. Set to `False` by default. `-d` for short.
 * `--middle` - The `middle` name of the person you're looking for. This is completely optional. `-m` for short.
 
+
+This should give us everything for bill henry gates @ microsoft.com
+```bash
+permafrost -s True -d True names bill gates microsoft.com -m henry
+```
+
+
+
 **Parameters**
 
 ```
