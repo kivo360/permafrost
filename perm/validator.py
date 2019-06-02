@@ -1,3 +1,5 @@
+import pandas as pd
+from pathlib import Path
 from email_validator import validate_email, EmailNotValidError
 from crayons import red, green
 def is_exist(email, debug=False):
@@ -61,6 +63,30 @@ def get_valid_emails(first, last, domain, middle=None, debug=False):
         exist = is_exist(email, debug=debug)
         verified.append(email)
     return verified
+
+def create_and_concat_csv(file_location, email_list, first, middle, last, domain):
+    file = Path(file_location)
+    csv_pd = None
+    if middle is None:
+        middle = "..."
+    if file.is_file():
+        csv_pd = pd.read_csv(file_location)
+        
+        temp_pd_list = [
+            {"first": first, "middle": middle, "last": last, "domain": domain, "email": email} for email in email_list
+        ]
+        temp_pd = pd.DataFrame(temp_pd_list)
+        csv_pd = pd.concat([temp_pd, csv_pd])
+        csv_pd = csv_pd.drop_duplicates()
+        csv_pd.to_csv(file_location, index=False)
+    else:
+        temp_pd_list = [
+            {"first": first, "middle": middle, "last": last, "domain": domain, "email": email} for email in email_list
+        ]
+        temp_pd = pd.DataFrame(temp_pd_list)
+        temp_pd = temp_pd.drop_duplicates()
+        temp_pd.to_csv(file_location, index=False)
+    # combined_csv = pd.concat( [  for f in filenames ] )
 
 
 if __name__ == "__main__":

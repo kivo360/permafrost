@@ -3,16 +3,20 @@
 """
 
 import click
-from perm.validator import get_valid_emails
+import os
+
+from perm.validator import get_valid_emails, create_and_concat_csv
 
 
 @click.group()
 @click.option('-d', '--debug', default=False)
+@click.option('-s', '--save', default=False)
 @click.pass_context
-def cli(ctx, debug):
+def cli(ctx, debug, save):
     if ctx.obj is None:
         ctx.obj = {}
     ctx.obj['DEBUG'] = debug
+    ctx.obj['SAVE'] = save
 
 @cli.command()
 @click.pass_context
@@ -22,4 +26,7 @@ def cli(ctx, debug):
 @click.option('-m', '--middle', default=None)
 def names(ctx, first, last, domain, middle):
     valid_emails = get_valid_emails(first, last, domain, middle=middle, debug=ctx.obj["DEBUG"])
-    click.echo(valid_emails)
+    if ctx.obj['SAVE']:
+        value = click.prompt('Please enter a valid email name', type=str, default="emails.csv")
+        desired_file = os.getcwd()+f"/{value}"
+        create_and_concat_csv(desired_file, valid_emails, first, middle, last, domain)
