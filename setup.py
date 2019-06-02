@@ -44,7 +44,7 @@ class UploadCommand(Command):
 
 setup(
     name="permafrost",
-    version="0.1",
+    version="0.1.1",
     author="Kevin Hill",
     author_email="kah.kevin.hill@gmail.com",
     description="Email Permutation and Verification Tool",

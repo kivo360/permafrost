@@ -1,5 +1,8 @@
 README.md
 setup.py
+perm/__init__.py
+perm/command.py
+perm/validator.py
 permafrost.egg-info/PKG-INFO
 permafrost.egg-info/SOURCES.txt
 permafrost.egg-info/dependency_links.txt
