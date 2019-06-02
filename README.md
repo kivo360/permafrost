@@ -48,3 +48,6 @@ permafrost names [first] [last] [domain]
 * `last` - The last name of the person you're looking for.
 * `domain` - The domain name you're searching through. 
 
+
+### TODO:
+* [ ] Remove useless files
