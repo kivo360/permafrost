@@ -1,0 +1,8 @@
+README.md
+setup.py
+permafrost.egg-info/PKG-INFO
+permafrost.egg-info/SOURCES.txt
+permafrost.egg-info/dependency_links.txt
+permafrost.egg-info/entry_points.txt
+permafrost.egg-info/requires.txt
+permafrost.egg-info/top_level.txt

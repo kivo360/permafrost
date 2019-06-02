@@ -50,17 +50,17 @@ setup(
     description="Email Permutation and Verification Tool",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    py_modules=["metaenv"],
-    install_requires=['crayons', 'spaceman', 'coolname', 'toolz', "validate_email", "pyDNS"], 
+    py_modules=["perm"],
+    install_requires=['crayons', 'spaceman', 'coolname', 'toolz', "email_validator"], 
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    cmdclass={"upload": UploadCommand}
-    # entry_points='''
-    #     [console_scripts]
-    #     decision=fundecision.manager:cli
-    # '''   
+    cmdclass={"upload": UploadCommand},
+    entry_points='''
+        [console_scripts]
+        permafrost=perm.command:cli
+    '''   
 )

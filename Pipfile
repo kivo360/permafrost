@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 click = "*"
+email-validator = "*"
+permafrost = {editable = true, path = "."}
 
 [dev-packages]
 
